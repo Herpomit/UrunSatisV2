@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card class="example-card mat-elevation-z8" >
+    <mat-card-header>
+      <mat-card-title>{{secUrun.urunAdi}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-xl-image src="{{secUrun.urunFoto}}">
+    <mat-card-content>
+      <h3 style="color: orange;"><b>{{secUrun.urunFiyat | currency: 'TRY'}}</b></h3>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="SepeteEkle(secUrun.urunId, secUrun.urunFiyat)">Sepete Ekle</button>
+      <button mat-button (click)="Begen(secUrun.urunId)">Beğen</button>
+      <button mat-button (click)="YorumYap()">Yorum Yap</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card style="margin-top: 35px;" class="mat-elevation-z8" *ngFor="let item of yorumlar">
+    <mat-card-header>
+      <mat-card-header>
+        <mat-card-title>{{item.KullaniciAdi}}</mat-card-title>
+      </mat-card-header>
+    </mat-card-header>
+    <mat-card-content>{{item.yorumIcerik}}</mat-card-content>
+  </mat-card>
+</div>

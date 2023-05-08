@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>Kart Bilgileriniz</span>
+</mat-toolbar>
+<div class="container">
+  <form style="margin-left: 25px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Kart No</mat-label>
+      <input matInput placeholder="Ürün Adı" required type="number">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-label>Kart Üzerindeki İsim</mat-label>
+      <input matInput placeholder="Ürün Fiyatı" required type="number">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-label>Son Kullanma Tarihi</mat-label>
+      <input matInput placeholder="Ürün Stok" required type="date">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-label>CVC2</mat-label>
+      <input matInput placeholder="CVC2">
+    </mat-form-field>
+    <mat-form-field>
+      <b> <mat-label>Toplam Miktar</mat-label></b>
+      <b> <input matInput placeholder="CVC2" value="{{toplamMiktar}}" disabled></b>
+    </mat-form-field>
+    <p></p>
+  </form>
+</div>
+<button mat-raised-button color="primary" style="margin-left: 15px;" (click)="dialogRef.close()">Satın Al</button>&nbsp;
+<button mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>

@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Sepetiniz</h2>
+  <p></p>
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="urunAdi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün Adı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.urunBilgi.urunAdi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="urunFiyat">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün Fiyat
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.urunBilgi.urunFiyat | currency:'TRY  '}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Adet">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ürün Adet
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.Adet}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit">
+      <button mat-icon-button matTooltip="Sepetten Kaldır" color="warn" (click)="Sil(kayit)">
+        <mat-icon aria-label="label">delete</mat-icon>
+      </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+  <button mat-raised-button color="priamry" style="margin-top: 50px;" (click)="SatinAl()">Satın al</button>
+</div>

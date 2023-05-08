@@ -1,0 +1,39 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="frm" style="margin-left: 25px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Adı</mat-label>
+      <input matInput placeholder="Ürün Adı" formControlName="urunAdi" required type="text">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Fiyat</mat-label>
+      <input matInput placeholder="Ürün Fiyatı" formControlName="urunFiyat" required type="number">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Stok</mat-label>
+      <input matInput placeholder="Ürün Stok" formControlName="urunStok" required type="number">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-label>Ürün Foto</mat-label>
+      <input matInput placeholder="Ürün Foto Zorunlu Değil" formControlName="urunFoto" #foto>
+    </mat-form-field>
+    <p></p>
+    <img src="{{foto.value}}" style="width: 200px;">
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-select placeholder="Kategori Seçiniz" formControlName="kategoriId" required>
+        <mat-option [value]="kat.kategoriId" *ngFor="let kat of kategoriler">{{kat.kategoriAdi}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <input type="hidden" formControlName="urunTarih">
+    <p></p>
+  </form>
+</div>
+<button mat-raised-button color="primary" style="margin-left: 15px;" [disabled]="frm.invalid"
+  (click)="dialogRef.close(frm.value)">Kaydet</button>&nbsp;
+<button mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>

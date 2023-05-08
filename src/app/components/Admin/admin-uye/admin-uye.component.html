@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>Üyeler</h2>
+  <button mat-fab color="primary" (click)="Ekle()">
+    <mat-icon aria-label="Kategori Ekle">add</mat-icon>
+  </button>
+  <p></p>
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="KullaniciAdi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> KullaniciAdi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.KullaniciAdi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Email
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.Email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Adsoyad">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Adsoyad
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.Adsoyad}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="uyeAdmin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Admin mi?
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> 
+      <mat-icon aria-hidden="false" aria-label="{2:label} icon" *ngIf="kayit.uyeAdmin == 1">verified_user</mat-icon>  
+      <mat-icon aria-hidden="false" aria-label="{2:label} icon" *ngIf="kayit.uyeAdmin == 0">close</mat-icon>  
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Islemler">  
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit">
+      <button mat-icon-button matTooltip="Üye Güncelle" color="primary" (click)="Duzenle(kayit)">
+        <mat-icon aria-label="label">edit</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Üye Sil" color="warn" (click)="Sil(kayit)">
+        <mat-icon aria-label="label">delete</mat-icon>
+      </button>
+      </mat-cell>
+    </ng-container>
+  
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator showFirstLastButtons
+        [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>

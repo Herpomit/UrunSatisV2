@@ -1,0 +1,50 @@
+<div class="container" style="display: inline-flex;">
+  <form [formGroup]="frm" style="margin-left: 25px; margin-top: 50px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Kullanıcı Adı</mat-label>
+      <input matInput placeholder="Kullanıcı Adı" formControlName="KullaniciAdi" type="text" required>
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-label>E-Mail</mat-label>
+      <input matInput placeholder="Email" formControlName="Email" required type="email">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-label>Şifre</mat-label>
+      <input matInput placeholder="Şifre" formControlName="Sifre" required type="password">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline">
+      <mat-label>Ad Soyad</mat-label>
+      <input matInput placeholder="Ad Soyad" formControlName="Adsoyad" required type="text">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="outline" *ngIf="api.yetkiKontrol(['Admin'])">
+      <mat-label>Admin mi?</mat-label>
+      <mat-select placeholder="Admin mi?" formControlName="uyeAdmin" required>
+        <mat-option [value]="1">Evet</mat-option>
+        <mat-option [value]="0">Hayır</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <img [src]="api.siteUrl+'/Dosyalar/'+foto1" style="width: 150px; margin-left: 70px; height: 150px;">
+  <input type="file" hidden #foto2 (change)="FotoSec($event)">&nbsp;
+  <button mat-raised-button color="primary" (click)="foto2.click()">Fotoğraf Seç</button>
+  <button mat-raised-button color="primary" style="margin-left: 80px; margin-top: 200px;"
+    (click)="UyeGuncelle()">Kaydet</button>
+  
+</div>
+<div class="container"><h1>Beğenilen Ürünler</h1></div>
+<div class="container">
+  <mat-card style="width: 10%;display: inline-flex; margin-right: 10px;" *ngFor="let item of begeniler">
+    <mat-card-header>
+      <mat-card-title>{{item.urunBilgi.urunAdi}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="Sil(item.begenId)">Sil</button>
+      </mat-card-actions>
+  </mat-card>
+</div>

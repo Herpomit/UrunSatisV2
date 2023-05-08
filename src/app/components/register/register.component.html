@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Kayıt Ol</h2>
+  <mat-form-field appearance="outline" style="width: 30%;">
+    <mat-label>Ad Soyad</mat-label>
+    <input matInput placeholder="Ad Soyad" type="text" #adsoyad>
+  </mat-form-field>
+  <p></p>
+  <mat-form-field appearance="outline" style="width: 30%;">
+    <mat-label>Kullanıcı Adı</mat-label>
+    <input matInput placeholder="Kullanıcı Adı" type="text" #kadi>
+  </mat-form-field>
+  <p></p>
+  <mat-form-field appearance="outline" style="width: 30%;">
+    <mat-label>Parola</mat-label>
+    <input matInput placeholder="Parola" type="password" #parola>
+  </mat-form-field>
+  <p></p>
+  <mat-form-field appearance="outline" style="width: 30%;">
+    <mat-label>E-Posta</mat-label>
+    <input matInput placeholder="E-Posta" type="text" #email>
+  </mat-form-field>
+  <p></p>
+  <button mat-raised-button color="primary"  (click)="KayitOl(adsoyad.value,kadi.value,parola.value,email.value)">Kayıt Ol</button>
+</div>

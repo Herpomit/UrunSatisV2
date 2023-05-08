@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>Kart Bilgileriniz</span>
+</mat-toolbar>
+<div class="container">
+  <form style="margin-left: 25px;" [formGroup]="frm" >
+    <mat-form-field appearance="outline"  >
+      <mat-label>Yorumunuz</mat-label>
+      <input matInput placeholder="Yorumunuz" formControlName="yorumIcerik" required type="text" #yorum>
+    </mat-form-field>
+    <p></p>
+  </form>
+</div>
+<button mat-raised-button color="primary" style="margin-left: 15px;" (click)="dialogRef.close(yorum.value)">Yorum Yap</button>&nbsp;
+<button mat-raised-button color="warn" (click)="dialogRef.close()">İptal</button>

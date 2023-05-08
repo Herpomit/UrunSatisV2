@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Ürünler</h1>
+  <div *ngFor="let urun of urunler"  style="display: inline-flex; margin-left: 20px;margin-top: 10px;" class="mat-elevation-z8">
+    <mat-card class="example-card" *ngIf="urun.urunStok > 0">
+      <a [routerLink]="['/urun-detay',urun.urunId]">
+      <mat-card-header >
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{urun.urunAdi}}</mat-card-title>
+      </mat-card-header>
+    </a>
+      <img mat-card-image style="width: 200px; align-self: center;" src="{{urun.urunFoto}}">
+      &nbsp;
+      <mat-card-content>
+        <h3 style="color: orange;"><b>{{urun.urunFiyat | currency: 'TRY'}}</b></h3>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="SepeteEkle(urun.urunId, urun.urunFiyat)">Sepete Ekle</button>
+        <button mat-button>Beğen</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
